@@ -1,5 +1,10 @@
 #include"MyQuaternion.h"
 
+/*
+记得看这个
+https://blog.csdn.net/silangquan/article/details/50390570
+
+*/
 
 //Konstruktur
 MyQuaternion(double e1,double e2,double e3,double e4);
