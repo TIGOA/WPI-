@@ -1,12 +1,26 @@
 #include"MyQuaternion.h"
 
-//Konstruktur
-MyQuaternion(double e1,double e2,double e3,double e4){};
-//Kopierkonstruktor
-MyQuaternion(vector<double> Q){}; 
-//addition operator +
 
+//Konstruktur
+MyQuaternion(double e1,double e2,double e3,double e4);
+//Kopierkonstruktor
+MyQuaternion(const MyQuaternion &Q){};
+//addition operator +
+void MyQuaternion::operator+(const MyQuaternion &Q)
+{
+	e1 += Q.e1;
+	e2 += Q.e2;
+	e3 += Q.e3;
+	e4 += Q.e4;
+}
 //subtraktion operator -
+void MyQuaternion::operator-(const MyQuaternion &Q)
+{
+	e1 -= Q.e1;
+	e2 -= Q.e2;
+	e3 -= Q.e3;
+	e4 -= Q.e4;
+}
 
 //setter/getter operator []
 
@@ -18,6 +32,10 @@ MyQuaternion(vector<double> Q){};
 
 //
 //conj() const
+MyQuaternion MyQuaternion::conj() const
+{
+	return MyQuaternion(-e1, -e2, -e3, e4);
+}
 
 //produkt zweier Quaternion, operator *
 
