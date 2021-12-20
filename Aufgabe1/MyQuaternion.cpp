@@ -1,47 +1,60 @@
-#include"MyQuaternion.h"
 
-/*
-记得看这个
-https://blog.csdn.net/silangquan/article/details/50390570
+#ifndef MyQuaternion_h
+#define MyQuaternion_h
+#include <iostream>
+#include <vector>
+#include <cmath> // for norm of Quaternion
 
-*/
 
-//Konstruktur
-MyQuaternion(double e1,double e2,double e3,double e4);
-//Kopierkonstruktor
-MyQuaternion(const MyQuaternion &Q){};
-//addition operator +
-void MyQuaternion::operator+(const MyQuaternion &Q)
+using namespace std;
+
+
+
+class MyQuaternion
 {
-	e1 += Q.e1;
-	e2 += Q.e2;
-	e3 += Q.e3;
-	e4 += Q.e4;
-}
-//subtraktion operator -
-void MyQuaternion::operator-(const MyQuaternion &Q)
-{
-	e1 -= Q.e1;
-	e2 -= Q.e2;
-	e3 -= Q.e3;
-	e4 -= Q.e4;
-}
+public:
+    
+   // double e1, e2, e3, e4;
+    double Quaternion[4];
+    
+    //default setting
+    MyQuaternion();
+    //Konstruktur
+    MyQuaternion(const double e1,const double e2,const double e3,const double e4);
+    //Kopierkonstruktor
+    MyQuaternion(const MyQuaternion &Q);
+    
+    
+    //setter/getter operator []
+    double & operator[] (const int index);
+    //get operator [] const ,read only
+    const double operator[](const int index)const;
+   
+    
+    
+    //addition operator +
+    MyQuaternion operator+(const MyQuaternion &Q)const;
+    //subtraktion operator -
+    MyQuaternion operator-(const MyQuaternion &Q)const;
+    //Skalierung einer Quaternion mit f  operator*(skalar)
+    MyQuaternion operator* (const double & fliesszahl) const;
+    
+    //kopier operator=(Q_rhs)
+    MyQuaternion & operator= (const MyQuaternion & Q);
 
-//setter/getter operator []
+    //produkt operator *
+    const MyQuaternion operator* (const MyQuaternion & Qb) const;
+    
+    // argument with scalar initial
+    MyQuaternion & operator= (const double value);
+    // conjugate Quaternion
+    const MyQuaternion conj(const int w = 4) const;
+    // divide by scalar
+    const MyQuaternion operator/ (double n) const;
+    // norm of Quaternion
+    double norm() const;
+    
+};
 
-//get operator [] const
-
-//kopier operator=(Q_rhs)
-
-//zuweisung operator mit Skalar als argument operator=(skalar)
-
-//
-//conj() const
-MyQuaternion MyQuaternion::conj() const
-{
-	return MyQuaternion(-e1, -e2, -e3, e4);
-}
-
-//produkt zweier Quaternion, operator *
-
-//Skalierung einer Quaternion mit f  operator*(skalar)
+#endif /* MyQuaternion_h */
+ 
