@@ -11,6 +11,7 @@
 #include <string>
 #include "MyQuaternion.h"
 
+#define PI 3.14159265
 MyQuaternion quaternion_rotation(double x,double y,double z,double const theta);
 MyQuaternion rotateX(MyQuaternion const &X,MyQuaternion const &Q);
 void Qprint(const MyQuaternion &,const std::string);
